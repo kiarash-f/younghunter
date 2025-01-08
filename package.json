@@ -1,0 +1,22 @@
+{
+  "name": "zoli",
+  "version": "1.0.0",
+  "description": "photography website",
+  "license": "ISC",
+  "author": "kiarash fayaz",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.3",
+    "morgan": "^1.10.0",
+    "slugify": "^1.6.6"
+  },
+  "devDependencies": {
+    "validator": "^13.12.0"
+  }
+}

@@ -1,0 +1,20 @@
+ [
+        {
+            "id": 1,
+            "title": "Sunset",
+            "description": "A beautiful sunset over the mountains.",
+            "url": "http://example.com/images/sunset.jpg"
+        },
+        {
+            "id": 2,
+            "title": "Forest",
+            "description": "A serene forest with tall trees.",
+            "url": "http://example.com/images/forest.jpg"
+        },
+        {
+            "id": 3,
+            "title": "Ocean",
+            "description": "Waves crashing on the shore.",
+            "url": "http://example.com/images/ocean.jpg"
+        }
+    ]

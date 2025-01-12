@@ -1,0 +1,51 @@
+[
+    {
+      "title": {
+        "en": "Nature Photography",
+        "fa": "عکاسی طبیعت"
+      },
+      "slug": "nature-photography",
+      "description": {
+        "en": "A collection of nature photography.",
+        "fa": "مجموعه‌ای از عکاسی‌های طبیعت"
+      },
+      "category": {
+        "en": "Photography",
+        "fa": "عکاسی"
+      },
+      "tags": {
+        "en": ["nature", "landscape", "wildlife"],
+        "fa": ["طبیعت", "مناظر", "حیات وحش"]
+      },
+      "imageCover": "nature_cover.jpg",
+      "images": [],
+      "subAlbums": [],
+      "published": true,
+      "isPrivate": false
+    },
+    {
+      "title": {
+        "en": "Urban Photography",
+        "fa": "عکاسی شهری"
+      },
+      "slug": "urban-photography",
+      "description": {
+        "en": "A collection of urban photography, including streets and cityscapes.",
+        "fa": "مجموعه‌ای از عکاسی‌های شهری، از جمله خیابان‌ها و مناظر شهری"
+      },
+      "category": {
+        "en": "Photography",
+        "fa": "عکاسی"
+      },
+      "tags": {
+        "en": ["urban", "street", "cityscape"],
+        "fa": ["شهری", "خیابان", "مناظر شهری"]
+      },
+      "imageCover": "urban_cover.jpg",
+      "images": [],
+      "subAlbums": [],
+      "published": true,
+      "isPrivate": false
+    }
+  ]
+  

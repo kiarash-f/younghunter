@@ -6,10 +6,10 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 
-
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
-const galleryRouter = require('./routes/galleryRoutes');
+const imageRouter = require('./routes/imageRoutes');
+const albumRouter = require('./routes/albumRoutes');
 const userRouter = require('./routes/userRoutes');
 
 const app = express();
@@ -50,9 +50,9 @@ app.use(
 // Serving static files
 app.use(express.static(`${__dirname}/public`));
 
-
 // Routes
-app.use('/api/v1/gallery', galleryRouter);
+app.use('/api/v1/images', imageRouter);
+app.use('/api/v1/albums', albumRouter);
 app.use('/api/v1/users', userRouter);
 
 app.all('*', (req, res, next) => {

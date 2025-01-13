@@ -1,0 +1,580 @@
+{
+	"info": {
+		"_postman_id": "a1c70392-2529-4697-9d0b-c928d529ef31",
+		"name": "zoli",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39902080"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/users",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/users/12345",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SignUp",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"kiarash\",\r\n    \"email\":\"kiarash@gmail.com\",\r\n    \"password\":\"test1234\",\r\n    \"passwordConfirm\":\"test1234\",\r\n    \"role\":\"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/users/signup",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2ZlYzQyNzY4OGQ1M2I4YzlhOTkwOSIsImlhdCI6MTczNjQzNzEwMCwiZXhwIjoxNzQ0MjEzMTAwfQ.k-_x3mQrmQaMVGwdFsp1NdSHB-3c1j1mq4oiQbzLE9A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"kiarash@gmail.com\",\r\n    \"password\":\"test1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/users/login",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "images",
+			"item": [
+				{
+					"name": "get all image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/images",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"images"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get image with id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/images/6783d69d583e19c570074565",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"images",
+								"6783d69d583e19c570074565"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2ZlYzQyNzY4OGQ1M2I4YzlhOTkwOSIsImlhdCI6MTczNjQ4OTM1NiwiZXhwIjoxNzQ0MjY1MzU2fQ.TE1CQ1nToLHWMVnUWr1gsuRHaWzBZ7EiD5wbmYVJJko",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"width\": 1300\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/images/6783d69d583e19c570074564",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"images",
+								"6783d69d583e19c570074564"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2ZlYzQyNzY4OGQ1M2I4YzlhOTkwOSIsImlhdCI6MTczNjY2MzI0OSwiZXhwIjoxNzQ0NDM5MjQ5fQ.ZLst0x8SYDYN41-s7q0yCZWrgIXD3bMR_C_QiPII9v4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": {\r\n    \"en\": \"Nature in Spring\",\r\n    \"fa\": \"طبیعت در بهار\"\r\n  },\r\n  \"description\": {\r\n    \"en\": \"Photos of blooming flowers in spring.\",\r\n    \"fa\": \"تصاویر گل‌های شکوفا در بهار.\"\r\n  },\r\n  \"category\": {\r\n    \"en\": \"Nature\",\r\n    \"fa\": \"طبیعت\"\r\n  },\r\n  \"tags\": {\r\n    \"en\": [\"spring\", \"flowers\", \"nature\"],\r\n    \"fa\": [\"بهار\", \"گل‌ها\", \"طبیعت\"]\r\n  },\r\n  \"imageCover\": \"spring-cover.jpg\",\r\n  \"images\": [\r\n    {\r\n      \"url\": \"flower1.jpg\",\r\n      \"width\": 1920,\r\n      \"height\": 1080,\r\n      \"size\": 300,\r\n      \"location\": {\r\n        \"name\": {\r\n          \"en\": \"Mountainside\",\r\n          \"fa\": \"دامنه کوه\"\r\n        }\r\n      },\r\n      \"dateTaken\": \"2025-01-01T00:00:00Z\"\r\n    }\r\n  ],\r\n  \"createdAt\": \"2025-01-10T12:00:00Z\",\r\n  \"published\": true,\r\n  \"isPrivate\": false,\r\n  \"views\": 150,\r\n  \"likes\": 20\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/images",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"images"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2ZlYzQyNzY4OGQ1M2I4YzlhOTkwOSIsImlhdCI6MTczNjQzNzMxMywiZXhwIjoxNzQ0MjEzMzEzfQ.Velu5GvE3NlMCF9w4MiJ9aNjodmovgYffrHtjTVtqXg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/images/6783d69d583e19c570074564",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"images",
+								"6783d69d583e19c570074564"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "albums",
+			"item": [
+				{
+					"name": "Create A New Album",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2ZlYzQyNzY4OGQ1M2I4YzlhOTkwOSIsImlhdCI6MTczNjY2MzI0OSwiZXhwIjoxNzQ0NDM5MjQ5fQ.ZLst0x8SYDYN41-s7q0yCZWrgIXD3bMR_C_QiPII9v4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": { \"en\": \"My Album\", \"fa\": \"آلبوم من\" },\r\n  \"category\": { \"en\": \"Nature\", \"fa\": \"طبیعت\" },\r\n  \"imageCover\": \"http://example.com/cover.jpg\",\r\n  \"tags\": { \"en\": [\"outdoors\", \"nature\"], \"fa\": [\"طبیعت\", \"دریا\"] }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/albums",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Albums",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/albums",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Album",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/albums/6783d69a583e19c57007455f",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"albums",
+								"6783d69a583e19c57007455f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update An Album",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2ZlYzQyNzY4OGQ1M2I4YzlhOTkwOSIsImlhdCI6MTczNjY5Mjc4MSwiZXhwIjoxNzQ0NDY4NzgxfQ.jrXvcczEk2MjLyqRi9y6pq5cU_8UE14fx1AIP92egrU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": { \"en\": \"Updated Album Title\", \"fa\": \"عنوان آلبوم به روز شده\" },\r\n  \"category\": { \"en\": \"Wildlife\", \"fa\": \"حیات وحش\" }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/albums/6783d69a583e19c57007455f",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"albums",
+								"6783d69a583e19c57007455f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete An Album",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2ZlYzQyNzY4OGQ1M2I4YzlhOTkwOSIsImlhdCI6MTczNjY5Mjc4MSwiZXhwIjoxNzQ0NDY4NzgxfQ.jrXvcczEk2MjLyqRi9y6pq5cU_8UE14fx1AIP92egrU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/albums/6783d69a583e19c57007455f",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"albums",
+								"6783d69a583e19c57007455f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Image To An Album",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2ZlYzQyNzY4OGQ1M2I4YzlhOTkwOSIsImlhdCI6MTczNjY5Mjc4MSwiZXhwIjoxNzQ0NDY4NzgxfQ.jrXvcczEk2MjLyqRi9y6pq5cU_8UE14fx1AIP92egrU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"imageIds\": [\"6783d69d583e19c570074565\", \"6783d69d583e19c570074564\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/albums/6783d69a583e19c57007455f/images",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"albums",
+								"6783d69a583e19c57007455f",
+								"images"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add SubAlbum To An Album",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2ZlYzQyNzY4OGQ1M2I4YzlhOTkwOSIsImlhdCI6MTczNjY5Mjc4MSwiZXhwIjoxNzQ0NDY4NzgxfQ.jrXvcczEk2MjLyqRi9y6pq5cU_8UE14fx1AIP92egrU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"subAlbumIds\": [\"5f8d0d55b54764421b7160c7\", \"5f8d0d55b54764421b7160c6\"]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/albums/5f8d0d55b54764421b7160c5/sub-albums",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"albums",
+								"5f8d0d55b54764421b7160c5",
+								"sub-albums"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

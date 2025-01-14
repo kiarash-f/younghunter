@@ -12,9 +12,7 @@ const app = require('./app');
 
 app.use(
   cors({
-    origin: 'http://your-frontend-domain.com', // Replace with your frontend URL
-    methods: ['GET', 'POST', 'PATCH', 'DELETE'],
-    credentials: true,
+    origin: ['http://localhost:5173'], // Allow only requests from your frontend
   })
 );
 

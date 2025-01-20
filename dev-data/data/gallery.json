@@ -1,275 +1,154 @@
- 
-    [
-        {
-          "title": {
-            "en": "Summer Vacation 2024",
-            "fa": "تابستان تعطیلات 2024"
-          },
-          "slug": "summer-vacation-2024",
-          "description": {
-            "en": "A collection of photos from our summer vacation in 2024.",
-            "fa": "مجموعه‌ای از عکس‌ها از تعطیلات تابستانی ما در سال 2024."
-          },
-          "category": {
-            "en": "Travel",
-            "fa": "سفر"
-          },
-          "tags": {
-            "en": ["vacation", "summer", "beach"],
-            "fa": ["تعطیلات", "تابستان", "ساحل"]
-          },
-          "imageCover": "https://example.com/images/summer_vacation_cover.jpg",
-          "images": [
-            {
-              "url": "https://example.com/images/summer_vacation_1.jpg",
-              "width": 1200,
-              "height": 800,
-              "size": 1500,
-              "location": {
-                "name": {
-                  "en": "Beachside, Miami",
-                  "fa": "کنار دریا، میامی"
-                }
-              },
-              "dateTaken": "2024-06-15T10:00:00Z"
-            },
-            {
-              "url": "https://example.com/images/summer_vacation_2.jpg",
-              "width": 1200,
-              "height": 800,
-              "size": 1400,
-              "location": {
-                "name": {
-                  "en": "Forest, Colorado",
-                  "fa": "جنگل، کلرادو"
-                }
-              },
-              "dateTaken": "2024-07-20T14:00:00Z"
-            }
-          ],
-          "parentAlbum": null,
-          "subAlbums": [],
-          "createdAt": "2024-01-01T00:00:00Z",
-          "published": true,
-          "isPrivate": false,
-          "views": 150,
-          "likes": 20,
-          "isAlbum": true
+[
+  {
+    "title": {
+      "en": "Nature Photography",
+      "fa": "عکاسی طبیعت"
+    },
+    "slug": "nature-photography",
+    "description": {
+      "en": "A collection of nature photography.",
+      "fa": "مجموعه‌ای از عکاسی‌های طبیعت"
+    },
+    "category": {
+      "en": "Photography",
+      "fa": "عکاسی"
+    },
+    "tags": {
+      "en": ["nature", "landscape", "wildlife"],
+      "fa": ["طبیعت", "مناظر", "حیات وحش"]
+    },
+    "imageCover": "nature_cover.jpg",
+    "images": [],
+    "subAlbums": [
+      {
+        "title": {
+          "en": "Forest Photography",
+          "fa": "عکاسی جنگل"
         },
-        {
-          "title": {
-            "en": "Wedding 2024",
-            "fa": "عروسی 2024"
-          },
-          "slug": "wedding-2024",
-          "description": {
-            "en": "Memories from our beautiful wedding in 2024.",
-            "fa": "یادگاری‌هایی از عروسی زیبای ما در سال 2024."
-          },
-          "category": {
-            "en": "Events",
-            "fa": "رویدادها"
-          },
-          "tags": {
-            "en": ["wedding", "love", "celebration"],
-            "fa": ["عروسی", "عشق", "جشن"]
-          },
-          "imageCover": "https://example.com/images/wedding_cover.jpg",
-          "images": [
-            {
-              "url": "https://example.com/images/wedding_1.jpg",
-              "width": 1200,
-              "height": 800,
-              "size": 1600,
-              "location": {
-                "name": {
-                  "en": "Hotel Ballroom, New York",
-                  "fa": "تالار هتل، نیویورک"
-                }
-              },
-              "dateTaken": "2024-05-10T18:00:00Z"
-            }
-          ],
-          "parentAlbum": null,
-          "subAlbums": [],
-          "createdAt": "2024-01-02T00:00:00Z",
-          "published": true,
-          "isPrivate": false,
-          "views": 200,
-          "likes": 30,
-          "isAlbum": true
+        "slug": "forest-photography",
+        "description": {
+          "en": "A collection of forest and woodland photography.",
+          "fa": "مجموعه‌ای از عکاسی‌های جنگل و جنگل‌های طبیعی"
         },
-        {
-          "title": {
-            "en": "Nature Walk",
-            "fa": "پیاده‌روی در طبیعت"
-          },
-          "slug": "nature-walk",
-          "description": {
-            "en": "A walk through nature, capturing its beauty.",
-            "fa": "پیاده‌روی در طبیعت و ثبت زیبایی‌های آن."
-          },
-          "category": {
-            "en": "Nature",
-            "fa": "طبیعت"
-          },
-          "tags": {
-            "en": ["nature", "forest", "hiking"],
-            "fa": ["طبیعت", "جنگل", "کوهنوردی"]
-          },
-          "imageCover": "https://example.com/images/nature_walk_cover.jpg",
-          "images": [
-            {
-              "url": "https://example.com/images/nature_walk_1.jpg",
-              "width": 1200,
-              "height": 800,
-              "size": 1300,
-              "location": {
-                "name": {
-                  "en": "Black Forest, Germany",
-                  "fa": "جنگل سیاه، آلمان"
-                }
-              },
-              "dateTaken": "2024-06-10T09:00:00Z"
-            }
-          ],
-          "parentAlbum": null,
-          "subAlbums": [],
-          "createdAt": "2024-01-03T00:00:00Z",
-          "published": true,
-          "isPrivate": false,
-          "views": 120,
-          "likes": 25,
-          "isAlbum": true
+        "category": {
+          "en": "Nature",
+          "fa": "طبیعت"
         },
-        {
-          "title": {
-            "en": "City Life",
-            "fa": "زندگی شهری"
-          },
-          "slug": "city-life",
-          "description": {
-            "en": "Photos capturing the vibrant city life.",
-            "fa": "عکس‌هایی از زندگی پر جنب‌وجوش شهری."
-          },
-          "category": {
-            "en": "Urban",
-            "fa": "شهری"
-          },
-          "tags": {
-            "en": ["city", "nightlife", "urban"],
-            "fa": ["شهر", "زندگی شبانه", "شهری"]
-          },
-          "imageCover": "https://example.com/images/city_life_cover.jpg",
-          "images": [
-            {
-              "url": "https://example.com/images/city_life_1.jpg",
-              "width": 1200,
-              "height": 800,
-              "size": 1450,
-              "location": {
-                "name": {
-                  "en": "Times Square, New York",
-                  "fa": "تایمز اسکوئر، نیویورک"
-                }
-              },
-              "dateTaken": "2024-08-15T22:00:00Z"
-            }
-          ],
-          "parentAlbum": null,
-          "subAlbums": [],
-          "createdAt": "2024-01-04T00:00:00Z",
-          "published": true,
-          "isPrivate": false,
-          "views": 180,
-          "likes": 35,
-          "isAlbum": true
+        "tags": {
+          "en": ["forest", "trees", "wildlife"],
+          "fa": ["جنگل", "درختان", "حیات وحش"]
         },
-        {
-          "title": {
-            "en": "Autumn 2024",
-            "fa": "پاییز 2024"
-          },
-          "slug": "autumn-2024",
-          "description": {
-            "en": "A collection of images from autumn 2024.",
-            "fa": "مجموعه‌ای از تصاویر پاییز 2024."
-          },
-          "category": {
-            "en": "Seasonal",
-            "fa": "فصل‌ها"
-          },
-          "tags": {
-            "en": ["autumn", "leaves", "fall"],
-            "fa": ["پاییز", "برگ‌ها", "ریختن"]
-          },
-          "imageCover": "https://example.com/images/autumn_cover.jpg",
-          "images": [
-            {
-              "url": "https://example.com/images/autumn_1.jpg",
-              "width": 1200,
-              "height": 800,
-              "size": 1550,
-              "location": {
-                "name": {
-                  "en": "Central Park, New York",
-                  "fa": "پارک مرکزی، نیویورک"
-                }
-              },
-              "dateTaken": "2024-10-05T10:00:00Z"
-            }
-          ],
-          "parentAlbum": null,
-          "subAlbums": [],
-          "createdAt": "2024-01-05T00:00:00Z",
-          "published": true,
-          "isPrivate": false,
-          "views": 160,
-          "likes": 40,
-          "isAlbum": true
+        "imageCover": "forest_cover.jpg",
+        "images": [],
+        "subAlbums": [],
+        "published": true,
+        "isPrivate": false,
+        "createdAt": "2025-01-20T10:00:00.000Z"
+      },
+      {
+        "title": {
+          "en": "Mountain Photography",
+          "fa": "عکاسی کوهستان"
         },
-        {
-          "title": {
-            "en": "Winter Wonderland",
-            "fa": "سرزمین عجایب زمستانی"
-          },
-          "slug": "winter-wonderland",
-          "description": {
-            "en": "A snowy winter collection from 2024.",
-            "fa": "مجموعه‌ای از تصاویر برفی زمستان 2024."
-          },
-          "category": {
-            "en": "Seasonal",
-            "fa": "فصل‌ها"
-          },
-          "tags": {
-            "en": ["snow", "winter", "christmas"],
-            "fa": ["برف", "زمستان", "کریسمس"]
-          },
-          "imageCover": "https://example.com/images/winter_wonderland_cover.jpg",
-          "images": [
-            {
-              "url": "https://example.com/images/winter_wonderland_1.jpg",
-              "width": 1200,
-              "height": 800,
-              "size": 1500,
-              "location": {
-                "name": {
-                  "en": "Rockefeller Center, New York",
-                  "fa": "مرکز راکفلر، نیویورک"
-                }
-              },
-              "dateTaken": "2024-12-25T12:00:00Z"
-            }
-          ],
-          "parentAlbum": null,
-          "subAlbums": [],
-          "createdAt": "2024-01-06T00:00:00Z",
-          "published": true,
-          "isPrivate": false,
-          "views": 140,
-          "likes": 45,
-          "isAlbum": true
-        }
-    ]
-      
+        "slug": "mountain-photography",
+        "description": {
+          "en": "A collection of mountain and highland photography.",
+          "fa": "مجموعه‌ای از عکاسی‌های کوهستان و ارتفاعات"
+        },
+        "category": {
+          "en": "Nature",
+          "fa": "طبیعت"
+        },
+        "tags": {
+          "en": ["mountain", "snow", "landscape"],
+          "fa": ["کوه", "برف", "مناظر"]
+        },
+        "imageCover": "mountain_cover.jpg",
+        "images": [],
+        "subAlbums": [],
+        "published": true,
+        "isPrivate": false,
+        "createdAt": "2025-01-20T10:05:00.000Z"
+      }
+    ],
+    "published": true,
+    "isPrivate": false,
+    "createdAt": "2025-01-20T10:00:00.000Z"
+  },
+  {
+    "title": {
+      "en": "Urban Photography",
+      "fa": "عکاسی شهری"
+    },
+    "slug": "urban-photography",
+    "description": {
+      "en": "A collection of urban photography, including streets and cityscapes.",
+      "fa": "مجموعه‌ای از عکاسی‌های شهری، از جمله خیابان‌ها و مناظر شهری"
+    },
+    "category": {
+      "en": "Photography",
+      "fa": "عکاسی"
+    },
+    "tags": {
+      "en": ["urban", "street", "cityscape"],
+      "fa": ["شهری", "خیابان", "مناظر شهری"]
+    },
+    "imageCover": "urban_cover.jpg",
+    "images": [],
+    "subAlbums": [
+      {
+        "title": {
+          "en": "Street Photography",
+          "fa": "عکاسی خیابانی"
+        },
+        "slug": "street-photography",
+        "description": {
+          "en": "A collection of street photography from various cities.",
+          "fa": "مجموعه‌ای از عکاسی‌های خیابانی از شهرهای مختلف"
+        },
+        "category": {
+          "en": "Urban",
+          "fa": "شهری"
+        },
+        "tags": {
+          "en": ["street", "urban", "city life"],
+          "fa": ["خیابان", "شهری", "زندگی شهری"]
+        },
+        "imageCover": "street_cover.jpg",
+        "images": [],
+        "subAlbums": [],
+        "published": true,
+        "isPrivate": false,
+        "createdAt": "2025-01-20T10:10:00.000Z"
+      },
+      {
+        "title": {
+          "en": "Cityscape Photography",
+          "fa": "عکاسی مناظر شهری"
+        },
+        "slug": "cityscape-photography",
+        "description": {
+          "en": "A collection of cityscape photography.",
+          "fa": "مجموعه‌ای از عکاسی‌های مناظر شهری"
+        },
+        "category": {
+          "en": "Urban",
+          "fa": "شهری"
+        },
+        "tags": {
+          "en": ["cityscape", "architecture", "urban"],
+          "fa": ["مناظر شهری", "معماری", "شهری"]
+        },
+        "imageCover": "cityscape_cover.jpg",
+        "images": [],
+        "subAlbums": [],
+        "published": true,
+        "isPrivate": false,
+        "createdAt": "2025-01-20T10:15:00.000Z"
+      }
+    ],
+    "published": true,
+    "isPrivate": false,
+    "createdAt": "2025-01-20T10:00:00.000Z"
+  }
+]

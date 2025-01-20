@@ -25,7 +25,7 @@ exports.getAlbum = catchAsync(async (req, res, next) => {
   const album = await Album.findById(req.params.id).populate({
       path: 'subAlbums',
       populate: {
-        path: 'images', 
+        path: 'images', // This will populate the images field inside each subAlbum
         select: 'imageCover title' 
       }
     })

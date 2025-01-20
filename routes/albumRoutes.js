@@ -24,7 +24,7 @@ router
   .route('/:id/sub-albums')
   .patch(authController.protect, albumController.addSubAlbums); // Add sub-albums to an album
 
-// SubAlbum Routes
+// SubAlbum Routess
 router
   .route('/:albumId/sub-albums')
   .get(authController.protect, albumController.getAllSubAlbums) // Fetch all sub-albums for an album

@@ -24,4 +24,20 @@ router
   .route('/:id/sub-albums')
   .patch(authController.protect, albumController.addSubAlbums); // Add sub-albums to an album
 
+// SubAlbum Routes
+router
+  .route('/:albumId/sub-albums')
+  .get(authController.protect, albumController.getAllSubAlbums) // Fetch all sub-albums for an album
+  .post(authController.protect, albumController.createSubAlbum); // Create a new sub-album
+
+router
+  .route('/:albumId/sub-albums/:subAlbumId')
+  .get(authController.protect, albumController.getSubAlbum) // Fetch a single sub-album
+  .patch(authController.protect, albumController.updateSubAlbum) // Update a specific sub-album
+  .delete(authController.protect, albumController.deleteSubAlbum); // Delete a specific sub-album
+
+router
+  .route('/:albumId/sub-albums/:subAlbumId/images')
+  .patch(authController.protect, albumController.addImagesToSubAlbum); // Add images to a specific sub-album
+
 module.exports = router;

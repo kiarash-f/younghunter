@@ -487,50 +487,6 @@
 					"response": []
 				},
 				{
-					"name": "Add Image To An Album",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2ZlYzQyNzY4OGQ1M2I4YzlhOTkwOSIsImlhdCI6MTczNjY5Mjc4MSwiZXhwIjoxNzQ0NDY4NzgxfQ.jrXvcczEk2MjLyqRi9y6pq5cU_8UE14fx1AIP92egrU",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"imageIds\": [\"6783d69d583e19c570074565\", \"6783d69d583e19c570074564\"]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "127.0.0.1:3000/api/v1/albums/6783d69a583e19c57007455f/images",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"v1",
-								"albums",
-								"6783d69a583e19c57007455f",
-								"images"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Add SubAlbum To An Album",
 					"request": {
 						"auth": {
@@ -569,6 +525,222 @@
 								"albums",
 								"5f8d0d55b54764421b7160c5",
 								"sub-albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Sub Albums",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/albums",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create SubAlbum",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2ZlYzQyNzY4OGQ1M2I4YzlhOTkwOSIsImlhdCI6MTczNzM2MTc5OSwiZXhwIjoxNzQ1MTM3Nzk5fQ.eyt4vTovUFQyuo0isWfNi-DrViTSNj0lXZIn5zKFols",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": {\r\n    \"en\": \"Album Title\",\r\n    \"fa\": \"عنوان آلبوم\"\r\n  },\r\n  \"description\": {\r\n    \"en\": \"Description of the album\",\r\n    \"fa\": \"توضیحات آلبوم\"\r\n  },\r\n  \"category\": {\r\n    \"en\": \"Category in English\",\r\n    \"fa\": \"دسته بندی به فارسی\"\r\n  },\r\n  \"tags\": {\r\n    \"en\": [\"tag1\", \"tag2\"],\r\n    \"fa\": [\"برچسب1\", \"برچسب2\"]\r\n  },\r\n  \"imageCover\": \"cover-image.jpg\",\r\n  \"published\": true,\r\n  \"isPrivate\": false\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/albums",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get A Single SubAlbum",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/albums/678ca326ba6d534fbf500351",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"albums",
+								"678ca326ba6d534fbf500351"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update A SubAlbum",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2ZlYzQyNzY4OGQ1M2I4YzlhOTkwOSIsImlhdCI6MTczNzM2MTc5OSwiZXhwIjoxNzQ1MTM3Nzk5fQ.eyt4vTovUFQyuo0isWfNi-DrViTSNj0lXZIn5zKFols",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": {\r\n    \"en\": \"Updated Album Title\",\r\n    \"fa\": \"عنوان آلبوم به روز شده\"\r\n  },\r\n  \"description\": {\r\n    \"en\": \"Updated description of the album\",\r\n    \"fa\": \"توضیحات به روز شده آلبوم\"\r\n  },\r\n  \"published\": false,\r\n  \"isPrivate\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/albums/678ca326ba6d534fbf500351",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"albums",
+								"678ca326ba6d534fbf500351"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete SubAlbum",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2ZlYzQyNzY4OGQ1M2I4YzlhOTkwOSIsImlhdCI6MTczNzM2MTc5OSwiZXhwIjoxNzQ1MTM3Nzk5fQ.eyt4vTovUFQyuo0isWfNi-DrViTSNj0lXZIn5zKFols",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/albums/678ca326ba6d534fbf500351",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"albums",
+								"678ca326ba6d534fbf500351"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Image To sub Album",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2ZlYzQyNzY4OGQ1M2I4YzlhOTkwOSIsImlhdCI6MTczNzM2MTc5OSwiZXhwIjoxNzQ1MTM3Nzk5fQ.eyt4vTovUFQyuo0isWfNi-DrViTSNj0lXZIn5zKFols",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"imageIds\": [\"6789188032c1b41b0577dcb3\", \"6789188032c1b41b0577dcb4\"]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/albums/678e0e5e6f2e5b279042c2a9/images",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"albums",
+								"678e0e5e6f2e5b279042c2a9",
+								"images"
 							]
 						}
 					},

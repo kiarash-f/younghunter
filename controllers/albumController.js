@@ -22,9 +22,15 @@ exports.getAllAlbums = catchAsync(async (req, res, next) => {
 
 // Get a single album with sub-albums and images populated
 exports.getAlbum = catchAsync(async (req, res, next) => {
-  const album = await Album.findById(req.params.id)
-    .populate('subAlbums')
+  const album = await Album.findById(req.params.id).populate({
+      path: 'subAlbums',
+      populate: {
+        path: 'images', 
+        select: 'imageCover title' 
+      }
+    })
     .populate('images');
+    
 
   if (!album) {
     return next(new AppError('No album found with that ID', 404));
@@ -124,5 +130,123 @@ exports.addSubAlbums = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: 'success',
     data: { album },
+  });
+});
+
+exports.createSubAlbum = catchAsync(async (req, res, next) => {
+  const album = await Album.findById(req.params.albumId);
+
+  if (!album) {
+    return next(new AppError('No album found with that ID', 404));
+  }
+
+  const subAlbumData = req.body;
+  album.subAlbums.push(subAlbumData);
+  await album.save();
+
+  res.status(201).json({
+    status: 'success',
+    data: { album },
+  });
+});
+exports.deleteSubAlbum = catchAsync(async (req, res, next) => {
+  const album = await Album.findById(req.params.albumId);
+
+  if (!album) {
+    return next(new AppError('No album found with that ID', 404));
+  }
+
+  const subAlbumId = req.params.subAlbumId;
+  const subAlbumIndex = album.subAlbums.findIndex((sub) => sub._id.toString() === subAlbumId);
+
+  if (subAlbumIndex === -1) {
+    return next(new AppError('No sub-album found with that ID', 404));
+  }
+
+  album.subAlbums.splice(subAlbumIndex, 1); // Remove subalbum
+  await album.save();
+
+  res.status(204).json({
+    status: 'success',
+    data: null,
+  });
+});
+exports.getSubAlbum = catchAsync(async (req, res, next) => {
+  const album = await Album.findById(req.params.albumId);
+
+  if (!album) {
+    return next(new AppError('No album found with that ID', 404));
+  }
+
+  const subAlbum = album.subAlbums.id(req.params.subAlbumId);
+
+  if (!subAlbum) {
+    return next(new AppError('No sub-album found with that ID', 404));
+  }
+
+  res.status(200).json({
+    status: 'success',
+    data: { subAlbum },
+  });
+});
+exports.getAllSubAlbums = catchAsync(async (req, res, next) => {
+  const album = await Album.findById(req.params.albumId);
+
+  if (!album) {
+    return next(new AppError('No album found with that ID', 404));
+  }
+
+  res.status(200).json({
+    status: 'success',
+    results: album.subAlbums.length,
+    data: { subAlbums: album.subAlbums },
+  });
+});
+exports.updateSubAlbum = catchAsync(async (req, res, next) => {
+  const album = await Album.findById(req.params.albumId);
+
+  if (!album) {
+    return next(new AppError('No album found with that ID', 404));
+  }
+
+  const subAlbum = album.subAlbums.id(req.params.subAlbumId);
+
+  if (!subAlbum) {
+    return next(new AppError('No sub-album found with that ID', 404));
+  }
+
+  Object.assign(subAlbum, req.body); // Merge updated fields
+  await album.save();
+
+  res.status(200).json({
+    status: 'success',
+    data: { subAlbum },
+  });
+});
+exports.addImagesToSubAlbum = catchAsync(async (req, res, next) => {
+  const album = await Album.findById(req.params.albumId);
+
+  if (!album) {
+    return next(new AppError('No album found with that ID', 404));
+  }
+
+  const subAlbum = album.subAlbums.id(req.params.subAlbumId);
+
+  if (!subAlbum) {
+    return next(new AppError('No sub-album found with that ID', 404));
+  }
+
+  const { imageIds } = req.body;
+  if (!Array.isArray(imageIds)) {
+    return next(new AppError('imageIds must be an array of image IDs', 400));
+  }
+
+  subAlbum.images = subAlbum.images || []; // Ensure the `images` array exists
+  subAlbum.images.push(...imageIds);
+  await album.save();
+
+  res.status(200).json({
+    status: 'success',
+    data: { subAlbum },
   });
 });

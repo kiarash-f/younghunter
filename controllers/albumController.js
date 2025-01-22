@@ -251,6 +251,7 @@ exports.addImagesToSubAlbum = catchAsync(async (req, res, next) => {
   });
 });
 exports.deleteImageFromSubAlbum = catchAsync(async (req, res, next) => {
+
   const album = await Album.findById(req.params.albumId);
 
   if (!album) {

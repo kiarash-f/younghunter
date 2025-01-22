@@ -117,7 +117,7 @@ const albumSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-    select: false,
+    select: true,
   },
   published: {
     type: Boolean,

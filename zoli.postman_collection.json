@@ -745,6 +745,44 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Delete Image From Sub Album",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3N2ZlYzQyNzY4OGQ1M2I4YzlhOTkwOSIsImlhdCI6MTczNzUzMDk1OCwiZXhwIjoxNzQ1MzA2OTU4fQ.zOlrlmEZNrNZ2J9ts5ag-y_U08SkIskouYgH-LWEhVM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/albums/678e38f1b16b8243c40e2fb4/sub-albums/678e3b72b16b8243c40e2fc4/images/34619384618",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"albums",
+								"678e38f1b16b8243c40e2fb4",
+								"sub-albums",
+								"678e3b72b16b8243c40e2fc4",
+								"images",
+								"34619384618"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

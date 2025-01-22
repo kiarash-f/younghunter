@@ -250,3 +250,35 @@ exports.addImagesToSubAlbum = catchAsync(async (req, res, next) => {
     data: { subAlbum },
   });
 });
+exports.deleteImageFromSubAlbum = catchAsync(async (req, res, next) => {
+  const album = await Album.findById(req.params.albumId);
+
+  if (!album) {
+    return next(new AppError('No album found with that ID', 404));
+  }
+
+  const subAlbum = album.subAlbums.id(req.params.subAlbumId);
+
+  if (!subAlbum) {
+    return next(new AppError('No sub-album found with that ID', 404));
+  }
+
+  const { imageId } = req.params;
+
+  const imageIndex = subAlbum.images.findIndex(
+    (img) => img.toString() === imageId
+  );
+
+  if (imageIndex === -1) {
+    return next(new AppError('No image found with that ID in the sub-album', 404));
+  }
+
+  // Remove the image from the images array
+  subAlbum.images.splice(imageIndex, 1);
+  await album.save();
+
+  res.status(204).json({
+    status: 'success',
+    data: null,
+  });
+});

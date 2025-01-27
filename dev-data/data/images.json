@@ -9,7 +9,8 @@
         "fa": "رشته کوه"
       },
       "dateTaken": "2024-05-20T12:00:00Z",
-      "album": "nature-photography"
+      "album": "nature-photography",
+      "position":"horizontal"
     },
     {
       "url": "/image/2.jpg",
@@ -21,7 +22,8 @@
         "fa": "مسیر جنگلی"
       },
       "dateTaken": "2024-06-15T10:00:00Z",
-      "album": "nature-photography"
+      "album": "nature-photography",
+      "position":"vertical"
     },
     {
       "url": "/image/3.jpg",
@@ -33,7 +35,8 @@
         "fa": "مرکز شهر"
       },
       "dateTaken": "2024-07-10T14:00:00Z",
-      "album": "urban-photography"
+      "album": "urban-photography",
+      "position":"vertical"
     },
     {
       "url": "/image/4.jpg",
@@ -45,7 +48,8 @@
         "fa": "نمای شهری"
       },
       "dateTaken": "2024-07-12T16:00:00Z",
-      "album": "urban-photography"
+      "album": "urban-photography",
+      "position":"vertical"
     },{
       
         "url": "/image/5.jpg",
@@ -57,7 +61,8 @@
           "fa": " شهری"
         },
         "dateTaken": "2024-07-12T16:00:00Z",
-        "album": "urban-photography"
+        "album": "urban-photography",
+        "position":"vertical"
       
     }
   ]

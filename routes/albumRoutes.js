@@ -32,7 +32,7 @@ router
 
 router
   .route('/:albumId/sub-albums/:subAlbumId')
-  .get(authController.protect, albumController.getSubAlbum) // Fetch a single sub-album
+  .get(albumController.getSubAlbum) // Fetch a single sub-album
   .patch(authController.protect, albumController.updateSubAlbum) // Update a specific sub-album
   .delete(authController.protect, albumController.deleteSubAlbum); // Delete a specific sub-album
 

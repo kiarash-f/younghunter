@@ -16,6 +16,7 @@ const imageSchema = new mongoose.Schema({
     type: Date,
     required: [true, 'The photo must have a date taken'],
   },
+  position:{type:String,required:true},
 });
 
 // Pre-save middleware to generate slug

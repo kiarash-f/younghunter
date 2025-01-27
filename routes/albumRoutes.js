@@ -45,4 +45,8 @@ router
   .route('/:albumId/sub-albums/:subAlbumId/images/:imageId')
   .delete(authController.protect, albumController.deleteImageFromSubAlbum); // Delete an image from a specific sub-album
 
+router
+  .route('/:albumId/sub-albums/:subAlbumId/images')
+  .get(albumController.getImagesFromSubAlbum); // Fetch all images from a specific sub-album
+
 module.exports = router;

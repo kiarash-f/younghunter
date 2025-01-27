@@ -22,15 +22,15 @@ exports.getAllAlbums = catchAsync(async (req, res, next) => {
 
 // Get a single album with sub-albums and images populated
 exports.getAlbum = catchAsync(async (req, res, next) => {
-  const album = await Album.findById(req.params.id).populate({
+  const album = await Album.findById(req.params.id)
+    .populate({
       path: 'subAlbums',
       populate: {
         path: 'images', // This will populate the images field inside each subAlbum
-        select: 'imageCover title' 
-      }
+        select: 'imageCover title',
+      },
     })
     .populate('images');
-    
 
   if (!album) {
     return next(new AppError('No album found with that ID', 404));
@@ -157,7 +157,9 @@ exports.deleteSubAlbum = catchAsync(async (req, res, next) => {
   }
 
   const subAlbumId = req.params.subAlbumId;
-  const subAlbumIndex = album.subAlbums.findIndex((sub) => sub._id.toString() === subAlbumId);
+  const subAlbumIndex = album.subAlbums.findIndex(
+    (sub) => sub._id.toString() === subAlbumId
+  );
 
   if (subAlbumIndex === -1) {
     return next(new AppError('No sub-album found with that ID', 404));
@@ -251,7 +253,6 @@ exports.addImagesToSubAlbum = catchAsync(async (req, res, next) => {
   });
 });
 exports.deleteImageFromSubAlbum = catchAsync(async (req, res, next) => {
-
   const album = await Album.findById(req.params.albumId);
 
   if (!album) {
@@ -271,7 +272,9 @@ exports.deleteImageFromSubAlbum = catchAsync(async (req, res, next) => {
   );
 
   if (imageIndex === -1) {
-    return next(new AppError('No image found with that ID in the sub-album', 404));
+    return next(
+      new AppError('No image found with that ID in the sub-album', 404)
+    );
   }
 
   // Remove the image from the images array
@@ -281,5 +284,26 @@ exports.deleteImageFromSubAlbum = catchAsync(async (req, res, next) => {
   res.status(204).json({
     status: 'success',
     data: null,
+  });
+});
+
+exports.getImagesFromSubAlbum = catchAsync(async (req, res, next) => {
+  const { subAlbumId } = req.params;
+
+  // Fetch the sub-album by ID and populate the images
+  const subAlbum = await Album.findById(subAlbumId).populate('images');
+
+  if (!subAlbum) {
+    return res.status(404).json({
+      status: 'fail',
+      message: 'Sub-album not found',
+    });
+  }
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      images: subAlbum.images,
+    },
   });
 });

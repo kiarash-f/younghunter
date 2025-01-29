@@ -174,7 +174,7 @@ exports.deleteSubAlbum = catchAsync(async (req, res, next) => {
   });
 });
 exports.getSubAlbum = catchAsync(async (req, res, next) => {
-  const album = await Album.findById(req.params.albumId);
+  const album = await Album.findById(req.params.albumId).populate('subAlbums.images');
 
   if (!album) {
     return next(new AppError('No album found with that ID', 404));

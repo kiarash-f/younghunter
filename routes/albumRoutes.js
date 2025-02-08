@@ -27,7 +27,7 @@ router
 // SubAlbum Routes
 router
   .route('/:albumId/sub-albums')
-  .get(authController.protect, albumController.getAllSubAlbums) // Fetch all sub-albums for an album
+  .get( albumController.getAllSubAlbums) // Fetch all sub-albums for an album
   .post(authController.protect, albumController.createSubAlbum); // Create a new sub-album
 
 router

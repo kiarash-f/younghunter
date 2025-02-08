@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const slugify = require('slugify');
 
 const imageSchema = new mongoose.Schema({
+  title: {
+    en: { type: String, trim: true },
+    fa: { type: String, trim: true },
+  },
   url: { type: String, required: true },
   width: Number,
   height: Number,
@@ -16,7 +20,8 @@ const imageSchema = new mongoose.Schema({
     type: Date,
     required: [true, 'The photo must have a date taken'],
   },
-  position:{type:String,required:true},
+  position: { type: String, required: true },
+  isFeaturedCarousel: { type: Boolean, required: true, default: false },
 });
 
 // Pre-save middleware to generate slug

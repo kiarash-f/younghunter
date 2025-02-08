@@ -6,7 +6,10 @@ const APIFeatures = require('../utils/apiFeatures');
 
 // Get all albums
 exports.getAllAlbums = catchAsync(async (req, res, next) => {
-  const features = new APIFeatures(Album.find(), req.query)
+  const features = new APIFeatures(
+    Album.find().populate('subAlbums.images'),
+    req.query
+  )
     .filter()
     .sort()
     .limitFields()
@@ -174,7 +177,9 @@ exports.deleteSubAlbum = catchAsync(async (req, res, next) => {
   });
 });
 exports.getSubAlbum = catchAsync(async (req, res, next) => {
-  const album = await Album.findById(req.params.albumId).populate('subAlbums.images');
+  const album = await Album.findById(req.params.albumId).populate(
+    'subAlbums.images'
+  );
 
   if (!album) {
     return next(new AppError('No album found with that ID', 404));

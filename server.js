@@ -10,20 +10,15 @@ process.on('uncaughtException', (err) => {
 dotenv.config({ path: './config.env' });
 const app = require('./app');
 
-app.use(
-  cors({
-    origin: ['http://localhost:5173'], // Allow only requests from your frontend
-  })
-);
 
-const DB = process.env.DATABASE.replace(
-  '<PASSWORD>',
-  process.env.DATABASE_PASSWORD
-);
 
-mongoose.connect(DB, {}).then(() => console.log('DB connection successful!'));
+const DB = process.env.DATABASE;
+mongoose
+  .connect(DB, {})
+  .then(() => console.log('DB connection successful!'))
+  .catch((err) => console.log('DB connection error:', err));
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
   console.log(`app is running on port ${port}`);
 });

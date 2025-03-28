@@ -16,14 +16,30 @@ const userRouter = require('./routes/userRoutes');
 const app = express();
 
 const corsOptions = {
-  origin: 'https://younghunter-front.liara.run', // فقط فرانت‌اند شما اجازه دارد
+  origin: 'https://younghunter-front.liara.run',
   methods: 'GET,POST,PUT,DELETE',
   allowedHeaders: 'Content-Type,Authorization',
+  credentials: true, // ✅ Allow credentials
 };
 
 app.use(cors(corsOptions));
 
+app.options('*', cors(corsOptions));
+
+// 🔹 Set CORS Headers for All Responses (Extra Safety)
+app.use((req, res, next) => {
+  res.header(
+    'Access-Control-Allow-Origin',
+    'https://younghunter-front.liara.run'
+  );
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
+
 //1) GLOBAL MIDDLEWARES
+
 // Set security HTTP headers
 app.use(helmet());
 

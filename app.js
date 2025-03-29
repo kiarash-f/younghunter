@@ -17,7 +17,7 @@ const app = express();
 
 const corsOptions = {
   origin: 'https://younghunter-front.liara.run',
-  methods: 'GET,POST,PUT,DELETE',
+  methods: 'GET,POST,PUT,DELETE,PATCH',
   allowedHeaders: 'Content-Type,Authorization',
   credentials: true, // ✅ Allow credentials
 };

@@ -1,0 +1,10 @@
+
+    {
+        "disks":[{
+            "name":"younghunter-disk",
+            "mountTo":"/public/image"
+     } ],
+     "app":"young-hunter",
+     "port":3000
+       
+    }

@@ -2,9 +2,10 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 
+app.use(express.static('public'));
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, '/tmp');
+    cb(null, 'public/image');
   },
   filename: (req, file, cb) => {
     console.log(file);

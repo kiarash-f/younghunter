@@ -14,12 +14,19 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 const router = express.Router();
 
-router.post('/',upload.single('image'), (req, res) => {
-  res.status(201).json({
-    status: 'success',
-    message: 'file uploaded',
-    file: req.file,
+router.post('/', upload.single('image'), (req, res) => {
+    console.log('Received file:', req.file); // Debugging
+    console.log('Received body:', req.body); // Debugging
+  
+    if (!req.file) {
+      return res.status(400).json({ status: 'fail', message: 'No file uploaded' });
+    }
+  
+    res.status(201).json({
+      status: 'success',
+      message: 'File uploaded successfully',
+      file: req.file,
+    });
   });
-});
 
 module.exports = router;

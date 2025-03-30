@@ -74,6 +74,7 @@ app.use(
 );
 
 // Serving static files
+app.use(express.static('public'));
 app.use('public/image', express.static('uploads'));
 
 // Routes

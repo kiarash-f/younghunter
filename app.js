@@ -6,12 +6,14 @@ const mongoSanitize = require('express-mongo-sanitize');
 const hpp = require('hpp');
 const path = require('path');
 const cors = require('cors');
+const multer = require('multer');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const imageRouter = require('./routes/imageRoutes');
 const albumRouter = require('./routes/albumRoutes');
 const userRouter = require('./routes/userRoutes');
+const uploadRoutes = require('./routes/uploadRoutes');
 
 const app = express();
 
@@ -72,7 +74,8 @@ app.use(
 );
 
 // Serving static files
-app.use(express.static(`${__dirname}/public/image`));
+app.use('/uploads', express.static(path.join(__dirname, 'public/image')));
+
 
 // Routes
 
@@ -82,6 +85,7 @@ app.get('/', (req, res) => {
 app.use('/api/v1/images', imageRouter);
 app.use('/api/v1/albums', albumRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/upload', uploadRoutes);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));

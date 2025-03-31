@@ -4,8 +4,7 @@ const catchAsync = require('../utils/catchAsync');
 const APIFeatures = require('../utils/apiFeatures');
 
 exports.uploadFormData = catchAsync(async (req, res, next) => {
-  req.body.url = `/public/image/${req.file.filename}`;
-  
+  req.body.url = `public/image/${req.file.filename}`;
 
   const newImage = await Image.create(req.body);
   console.log(newImage);

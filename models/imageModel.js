@@ -5,7 +5,6 @@ const imageSchema = new mongoose.Schema({
   title: {
     en: { type: String, trim: true },
     fa: { type: String, trim: true },
-    default: 'kiarash',
   },
   url: { type: String, required: true },
   width: Number,
@@ -16,14 +15,12 @@ const imageSchema = new mongoose.Schema({
       en: { type: String, trim: true }, // Location name in English
       fa: { type: String, trim: true }, // Location name in Persian
     },
-    default: 'rasht',
   },
   dateTaken: {
     type: Date,
     // required: [true, 'The photo must have a date taken'],
-    default: 2025,
   },
-  // position: { type: String, required: true },
+  position: { type: String, required: true, default: 'vertical' },
   isFeaturedCarousel: { type: Boolean, required: true, default: false },
 });
 

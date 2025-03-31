@@ -6,7 +6,7 @@ const path = require('path');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, '/public/image');
+    cb(null, 'public/image');
   },
   filename: (req, file, cb) => {
     console.log(file);
@@ -18,10 +18,6 @@ const upload = multer({ storage });
 const router = express.Router();
 
 // Upload route
-router.post(
-  '/',
-  upload.single('image'),
-  uploadController.uploadFormData
-);
+router.post('/', upload.single('image'), uploadController.uploadFormData);
 
 module.exports = router;

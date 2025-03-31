@@ -1,19 +1,23 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
+const Image = require('../models/imageModel');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, '/public/image');
+    cb(null, './public/image');
   },
   filename: (req, file, cb) => {
     console.log(file);
     cb(null, Date.now() + path.extname(file.originalname));
   },
 });
+
 const upload = multer({ storage });
+
 const router = express.Router();
 
+// Upload route
 router.post('/', upload.single('image'), async (req, res) => {
   try {
     if (!req.file) {
@@ -31,13 +35,25 @@ router.post('/', upload.single('image'), async (req, res) => {
       isFeaturedCarousel,
     } = req.body;
 
+    // Validate required fields
+    if (
+      !enTitle ||
+      !faTitle ||
+      !enLocation ||
+      !faLocation ||
+      !dateTaken ||
+      !position
+    ) {
+      return res.status(400).json({ message: 'Missing required fields!' });
+    }
+
     // Create new image document in MongoDB
     const newImage = new Image({
       title: {
         en: enTitle,
         fa: faTitle,
       },
-      url: `/uploads/${req.file.filename}`, // URL to access the file
+      url: `/public/image/${req.file.filename}`, // URL to access the file
       width: req.file.width || null, // Width (if extracted)
       height: req.file.height || null, // Height (if extracted)
       size: Math.round(req.file.size / 1024), // Convert bytes to KB

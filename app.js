@@ -75,9 +75,7 @@ app.use(
 
 // Serving static files
 // app.use(express.static('public'));
-app.use('/uploads', express.static(path.join(__dirname, 'public', 'images')));
-
-app.use('/uploads', express.static('/var/www/liara-disk/uploads'));
+app.use("public/image", express.static("image"));
 
 // Routes
 

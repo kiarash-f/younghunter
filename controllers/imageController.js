@@ -16,6 +16,7 @@ exports.getAllImages = catchAsync(async (req, res, next) => {
     results: images.length,
     data: { images },
   });
+  console.log('route hits');
 });
 
 exports.getImage = catchAsync(async (req, res, next) => {
@@ -37,6 +38,22 @@ exports.createImage = catchAsync(async (req, res, next) => {
   res.status(201).json({
     status: 'success',
     data: { image: newImage },
+  });
+});
+
+exports.updateImage = catchAsync(async (req, res, next) => {
+  const updatedImage = await Image.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
+
+  if (!updatedImage) {
+    return next(new AppError('No image found with that ID', 404));
+  }
+
+  res.status(200).json({
+    status: 'success',
+    data: { image: updatedImage },
   });
 });
 

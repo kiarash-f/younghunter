@@ -4,8 +4,11 @@ const catchAsync = require('../utils/catchAsync');
 const APIFeatures = require('../utils/apiFeatures');
 
 exports.uploadFormData = catchAsync(async (req, res, next) => {
-  req.body.url = `/public/image/${req.file.filename}`;
-  const newImage = await Image.create(req.body);
+  // req.body.url = `/public/image/${req.file.filename}`;
+  // req.body.position = req.file.position;
+  // req.body.dateTaken = req.file.dateTaken;
+
+  const newImage = await Image.create(req.body.file);
   console.log(newImage);
   res
     .status(201)

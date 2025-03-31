@@ -18,9 +18,9 @@ const imageSchema = new mongoose.Schema({
   },
   dateTaken: {
     type: Date,
-    required: [true, 'The photo must have a date taken'],
+    // required: [true, 'The photo must have a date taken'],
   },
-  position: { type: String, required: true },
+  // position: { type: String, required: true },
   isFeaturedCarousel: { type: Boolean, required: true, default: false },
 });
 

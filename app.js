@@ -34,9 +34,9 @@ app.use((req, res, next) => {
     'Access-Control-Allow-Origin',
     'https://younghunter-front.liara.run'
   );
-  // res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
-  // res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  // res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
   next();
 });
 
@@ -75,7 +75,7 @@ app.use(
 
 // Serving static files
 // app.use(express.static('public'));
-app.use("public/image", express.static("image"));
+app.use('public/image', express.static('image'));
 
 // Routes
 

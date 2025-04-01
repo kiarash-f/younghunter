@@ -39,9 +39,9 @@ exports.createImage = [
   catchAsync(async (req, res, next) => {
     const { title, location, isFeaturedCarousel, dateTaken, image, position } =
       req.body;
-          
+
     // const imagePath = req.file ? req.file.path : null;
-    const imagePath= `public/image/${req.file.filename}`;
+    const imagePath = `public/image/${req.file.name}`;
 
     const newImage = await Image.create({
       ...req.body,

@@ -13,7 +13,7 @@ const globalErrorHandler = require('./controllers/errorController');
 const imageRouter = require('./routes/imageRoutes');
 const albumRouter = require('./routes/albumRoutes');
 const userRouter = require('./routes/userRoutes');
-const uploadRoutes = require('./routes/uploadRoutes');
+// const uploadRoutes = require('./routes/uploadRoutes');
 
 const app = express();
 
@@ -85,7 +85,7 @@ app.get('/', (req, res) => {
 app.use('/api/v1/images', imageRouter);
 app.use('/api/v1/albums', albumRouter);
 app.use('/api/v1/users', userRouter);
-app.use('/api/v1/upload', uploadRoutes);
+// app.use('/api/v1/upload', uploadRoutes);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));

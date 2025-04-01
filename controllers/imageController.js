@@ -2,6 +2,8 @@ const Image = require('../models/imageModel');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const APIFeatures = require('../utils/apiFeatures');
+const upload = require('./uploadController');
+const mongoose = require('mongoose');
 
 exports.getAllImages = catchAsync(async (req, res, next) => {
   const features = new APIFeatures(Image.find(), req.query)
@@ -32,14 +34,26 @@ exports.getImage = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.createImage = catchAsync(async (req, res, next) => {
-  const newImage = await Image.create(req.body);
+exports.createImage = [
+  upload.single('image'),
+  catchAsync(async (req, res, next) => {
+    const { title, location, isFeaturedCarousel, dateTaken, image, position } =
+      req.body;
+          
+    // const imagePath = req.file ? req.file.path : null;
+    const imagePath= `public/image/${req.file.filename}`;
 
-  res.status(201).json({
-    status: 'success',
-    data: { image: newImage },
-  });
-});
+    const newImage = await Image.create({
+      ...req.body,
+      url: imagePath,
+    });
+
+    res.status(201).json({
+      status: 'success',
+      data: { image: newImage },
+    });
+  }),
+];
 
 exports.updateImage = catchAsync(async (req, res, next) => {
   const updatedImage = await Image.findByIdAndUpdate(req.params.id, req.body, {

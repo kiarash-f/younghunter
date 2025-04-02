@@ -77,8 +77,8 @@ app.use(
 // Serving static files
 // app.use(express.static('public'));
 app.use(
-  'public/image',
-  express.static('public/image', {
+  '/public',
+  express.static(path.join(__dirname, 'public'), {
     setHeaders: (res, path, stat) => {
       res.set('Cross-Origin-Resource-Policy', 'cross-origin');
     },

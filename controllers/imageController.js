@@ -41,7 +41,7 @@ exports.createImage = [
       req.body;
 
     // const imagePath = req.file ? req.file.path : null;
-    const imagePath = `public/image/${req.file.filename}`;
+    const imagePath = `image/${req.file.filename}`;
 
     const newImage = await Image.create({
       ...req.body,

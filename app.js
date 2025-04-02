@@ -37,7 +37,7 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
-  res.set("Cross-Origin-Resource-Policy", "cross-origin");
+
   next();
 });
 
@@ -76,7 +76,14 @@ app.use(
 
 // Serving static files
 // app.use(express.static('public'));
-app.use('public/image', express.static('public/image'));
+app.use(
+  'public/image',
+  express.static('public/image', {
+    setHeaders: (res, path, stat) => {
+      res.set('Cross-Origin-Resource-Policy', 'cross-origin');
+    },
+  })
+);
 
 // Routes
 

@@ -8,15 +8,27 @@ const subAlbumSchema = new mongoose.Schema({
       type: String,
       required: [true, 'A sub-album must have a title in English'],
       trim: true,
-      maxlength: [40, 'A sub-album title (English) must have 40 characters or less'],
-      minlength: [5, 'A sub-album title (English) must have 5 characters or more'],
+      maxlength: [
+        40,
+        'A sub-album title (English) must have 40 characters or less',
+      ],
+      minlength: [
+        3,
+        'A sub-album title (English) must have 5 characters or more',
+      ],
     },
     fa: {
       type: String,
       required: [true, 'A sub-album must have a title in Persian'],
       trim: true,
-      maxlength: [40, 'A sub-album title (Persian) must have 40 characters or less'],
-      minlength: [5, 'A sub-album title (Persian) must have 5 characters or more'],
+      maxlength: [
+        40,
+        'A sub-album title (Persian) must have 40 characters or less',
+      ],
+      minlength: [
+        2,
+        'A sub-album title (Persian) must have 5 characters or more',
+      ],
     },
   },
   description: {
@@ -67,14 +79,20 @@ const albumSchema = new mongoose.Schema({
       type: String,
       required: [true, 'An album must have a title in English'],
       trim: true,
-      maxlength: [40, 'An album title (English) must have 40 characters or less'],
+      maxlength: [
+        40,
+        'An album title (English) must have 40 characters or less',
+      ],
       minlength: [5, 'An album title (English) must have 5 characters or more'],
     },
     fa: {
       type: String,
       required: [true, 'An album must have a title in Persian'],
       trim: true,
-      maxlength: [40, 'An album title (Persian) must have 40 characters or less'],
+      maxlength: [
+        40,
+        'An album title (Persian) must have 40 characters or less',
+      ],
       minlength: [5, 'An album title (Persian) must have 5 characters or more'],
     },
   },
@@ -135,7 +153,6 @@ const albumSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  
 });
 
 // Pre-save middleware to generate slug

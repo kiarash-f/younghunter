@@ -1,3 +1,4 @@
 node_modules/
 younghunter-frontend/
 .vscode/
+config.env/

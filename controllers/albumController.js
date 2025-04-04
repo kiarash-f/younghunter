@@ -64,7 +64,6 @@ exports.createAlbum = [
     });
   }),
 ];
-
 // Update an album (e.g., add sub-albums or metadata)
 exports.updateAlbum = catchAsync(async (req, res, next) => {
   const updatedAlbum = await Album.findByIdAndUpdate(req.params.id, req.body, {
@@ -81,7 +80,6 @@ exports.updateAlbum = catchAsync(async (req, res, next) => {
     data: { album: updatedAlbum },
   });
 });
-
 // Delete an album and optionally cascade-delete sub-albums and images
 exports.deleteAlbum = catchAsync(async (req, res, next) => {
   const album = await Album.findById(req.params.id);
@@ -101,7 +99,6 @@ exports.deleteAlbum = catchAsync(async (req, res, next) => {
     data: null,
   });
 });
-
 // Add images to an album
 exports.addImagesToAlbum = catchAsync(async (req, res, next) => {
   const album = await Album.findById(req.params.id);
@@ -123,7 +120,6 @@ exports.addImagesToAlbum = catchAsync(async (req, res, next) => {
     data: { album },
   });
 });
-
 // Add sub-albums to an album
 exports.addSubAlbums = catchAsync(async (req, res, next) => {
   const album = await Album.findById(req.params.id);
@@ -145,7 +141,6 @@ exports.addSubAlbums = catchAsync(async (req, res, next) => {
     data: { album },
   });
 });
-
 exports.createSubAlbum = [
   upload.single('imageCover'),
   catchAsync(async (req, res, next) => {
@@ -312,7 +307,6 @@ exports.deleteImageFromSubAlbum = catchAsync(async (req, res, next) => {
     data: null,
   });
 });
-
 exports.getImagesFromSubAlbum = catchAsync(async (req, res, next) => {
   const { subAlbumId } = req.params;
 

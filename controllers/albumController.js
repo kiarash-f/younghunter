@@ -146,22 +146,33 @@ exports.addSubAlbums = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.createSubAlbum = catchAsync(async (req, res, next) => {
-  const album = await Album.findById(req.params.albumId);
+exports.createSubAlbum = [
+  upload.single('imageCover'),
+  catchAsync(async (req, res, next) => {
+    const album = await Album.findById(req.params.albumId);
 
-  if (!album) {
-    return next(new AppError('No album found with that ID', 404));
-  }
+    if (!album) {
+      return next(new AppError('No album found with that ID', 404));
+    }
 
-  const subAlbumData = req.body;
-  album.subAlbums.push(subAlbumData);
-  await album.save();
+    const subAlbumData = req.body;
+    const { ...imageCover } = subAlbumData;
+    const imageCoverPath = `${req.protocol}://${req.get('host')}/public/image/${
+      req.file.filename
+    }`;
 
-  res.status(201).json({
-    status: 'success',
-    data: { album },
-  });
-});
+    album.subAlbums.push({
+      ...subAlbumData,
+      imageCover: imageCoverPath,
+    });
+    await album.save();
+
+    res.status(201).json({
+      status: 'success',
+      data: { album },
+    });
+  }),
+];
 exports.deleteSubAlbum = catchAsync(async (req, res, next) => {
   const album = await Album.findById(req.params.albumId);
 

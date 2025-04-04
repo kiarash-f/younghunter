@@ -46,7 +46,7 @@ exports.getAlbum = catchAsync(async (req, res, next) => {
 });
 // Create a new album
 exports.createAlbum = [
-  upload.single('album'),
+  upload.single('imageCover'),
   catchAsync(async (req, res, next) => {
     const { title, category, tags, imageCover } = req.body;
 

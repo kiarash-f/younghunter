@@ -3,6 +3,7 @@ const Image = require('../models/imageModel'); // Assuming images are stored in 
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const APIFeatures = require('../utils/apiFeatures');
+const upload = require('./uploadController');
 
 // Get all albums
 exports.getAllAlbums = catchAsync(async (req, res, next) => {
@@ -22,7 +23,6 @@ exports.getAllAlbums = catchAsync(async (req, res, next) => {
     data: { albums },
   });
 });
-
 // Get a single album with sub-albums and images populated
 exports.getAlbum = catchAsync(async (req, res, next) => {
   const album = await Album.findById(req.params.id)
@@ -44,16 +44,26 @@ exports.getAlbum = catchAsync(async (req, res, next) => {
     data: { album },
   });
 });
-
 // Create a new album
-exports.createAlbum = catchAsync(async (req, res, next) => {
-  const newAlbum = await Album.create(req.body);
+exports.createAlbum = [
+  upload.single('album'),
+  catchAsync(async (req, res, next) => {
+    const { title, category, tags, imageCover } = req.body;
 
-  res.status(201).json({
-    status: 'success',
-    data: { album: newAlbum },
-  });
-});
+    const imageCoverPath = `${req.protocol}://${req.get('host')}/public/image/${
+      req.file.filename
+    }`;
+    const newAlbum = await Album.create({
+      ...req.body,
+      imageCover: imageCoverPath,
+    });
+
+    res.status(201).json({
+      status: 'success',
+      data: { album: newAlbum },
+    });
+  }),
+];
 
 // Update an album (e.g., add sub-albums or metadata)
 exports.updateAlbum = catchAsync(async (req, res, next) => {

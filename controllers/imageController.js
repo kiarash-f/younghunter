@@ -20,7 +20,6 @@ exports.getAllImages = catchAsync(async (req, res, next) => {
   });
   console.log('route hits');
 });
-
 exports.getImage = catchAsync(async (req, res, next) => {
   const image = await Image.findById(req.params.id);
 
@@ -33,7 +32,6 @@ exports.getImage = catchAsync(async (req, res, next) => {
     data: { image },
   });
 });
-
 exports.createImage = [
   upload.single('image'),
   catchAsync(async (req, res, next) => {
@@ -56,7 +54,6 @@ exports.createImage = [
     });
   }),
 ];
-
 exports.updateImage = catchAsync(async (req, res, next) => {
   const updatedImage = await Image.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
@@ -72,7 +69,6 @@ exports.updateImage = catchAsync(async (req, res, next) => {
     data: { image: updatedImage },
   });
 });
-
 exports.updateImage = catchAsync(async (req, res, next) => {
   const updatedImage = await Image.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
@@ -88,7 +84,6 @@ exports.updateImage = catchAsync(async (req, res, next) => {
     data: { image: updatedImage },
   });
 });
-
 exports.deleteImage = catchAsync(async (req, res, next) => {
   const image = await Image.findByIdAndDelete(req.params.id);
 

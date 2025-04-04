@@ -34,7 +34,6 @@ const createSendToken = (user, statusCode, res) => {
     },
   });
 };
-
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create({
     name: req.body.name,
@@ -45,17 +44,6 @@ exports.signup = catchAsync(async (req, res, next) => {
 
   createSendToken(newUser, 201, res);
 });
-exports.signup = catchAsync(async (req, res, next) => {
-  const newUser = await User.create({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-    passwordConfirm: req.body.passwordConfirm,
-  });
-
-  createSendToken(newUser, 201, res);
-});
-
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 
@@ -73,7 +61,6 @@ exports.login = catchAsync(async (req, res, next) => {
   // 3) If everything ok, send token to client
   createSendToken(user, 200, res);
 });
-
 exports.protect = catchAsync(async (req, res, next) => {
   let token;
   // 1) Getting token and check of it's there
@@ -103,7 +90,6 @@ exports.protect = catchAsync(async (req, res, next) => {
   req.user = currentUser;
   next();
 });
-
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
@@ -154,7 +140,6 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     );
   }
 });
-
 exports.resetPassword = catchAsync(async (req, res, next) => {
   // 1) Get user based on the token
   const hashedToken = crypto
@@ -181,7 +166,6 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   // 4) Log the user in, send JWT
   createSendToken(user, 200, res);
 });
-
 exports.updatePassword = catchAsync(async (req, res, next) => {
   // 1) Get user from collection
   const user = await User.findById(req.user.id).select('+password');

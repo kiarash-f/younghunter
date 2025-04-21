@@ -37,18 +37,19 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
-
   next();
 });
 
-//1) GLOBAL MIDDLEWARES
+// 1) GLOBAL MIDDLEWARES
 
 // Set security HTTP headers
 app.use(helmet());
-// development logging
+
+// Development logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
+
 // Limit requests from same API
 app.set('trust proxy', 1);
 const limiter = ratelimit({
@@ -57,17 +58,21 @@ const limiter = ratelimit({
   message: 'Too many requests from this IP, please try again in an hour!',
 });
 app.use('/api', limiter);
+
 // Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));
+
 // Data sanitization against NoSQL query injection
 app.use(mongoSanitize());
+
 // Prevent parameter pollution
 app.use(
   hpp({
     whitelist: [],
   })
 );
-// Serving static files
+
+// Serving static files (uploaded images)
 app.use(
   '/public',
   express.static(path.join(__dirname, 'public'), {
@@ -76,20 +81,23 @@ app.use(
     },
   })
 );
-// Routes
+
+// API Routes
 app.use('/api/v1/images', imageRouter);
 app.use('/api/v1/albums', albumRouter);
 app.use('/api/v1/users', userRouter);
-app.all('*', (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
-});
-app.use(globalErrorHandler);
 
-// Serve frontend React app (dist or build folder)
+// ✅ Serve React frontend (dist folder)
 app.use(express.static(path.join(__dirname, 'dist')));
-
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
+
+// ❌ 404 handler (after frontend serving)
+app.all('*', (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+});
+
+app.use(globalErrorHandler);
 
 module.exports = app;

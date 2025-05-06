@@ -18,7 +18,7 @@ const userRouter = require('./routes/userRoutes');
 const app = express();
 
 const corsOptions = {
-  origin: 'https://younghunter-front.liara.run',
+  origin: 'https://younghunter.net',
   methods: 'GET,POST,PUT,DELETE,PATCH',
   allowedHeaders: 'Content-Type,Authorization',
   credentials: true, // ✅ Allow credentials
@@ -93,7 +93,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
-// ❌ 404 handler (after frontend serving)
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
@@ -101,3 +100,5 @@ app.all('*', (req, res, next) => {
 app.use(globalErrorHandler);
 
 module.exports = app;
+
+//TODO : work on serving website faster

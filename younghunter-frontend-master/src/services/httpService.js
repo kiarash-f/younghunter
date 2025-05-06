@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie"
 
-const BASE_URL = "https://young-hunter.liara.run/api/v1";
+const BASE_URL = "https://younghunter.net/api/v1";
 
 const app = axios.create({
   baseURL: BASE_URL,

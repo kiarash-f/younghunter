@@ -39,7 +39,7 @@ function ImageForm({ onClose, imageToEdit = {} }) {
 
   const imagePreview = selectedFile
     ? URL.createObjectURL(selectedFile)
-    : imageToEdit.url;
+    : imageToEdit.url ? `https://younghunter.net/${imageToEdit.url}` : null
 
   const onSubmit = async (data) => {
     const formData = new FormData();

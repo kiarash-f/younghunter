@@ -107,6 +107,8 @@ function Carousel() {
 
   const activeImage = carouselImages[state.activeItemIndex] || [];
 
+  console.log(images)
+
   return (
     <div className="w-full dark:bg-zinc-950 transition-all duration-300 py-10">
       <div className="max-w-[500px] mx-auto bg-neutral-100 shadow-3xl dark:shadow-neutral-600 flex items-center justify-center relative p-5 rounded-2xl transition-all duration-300">

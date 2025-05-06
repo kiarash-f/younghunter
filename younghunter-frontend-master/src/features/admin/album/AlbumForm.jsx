@@ -42,7 +42,7 @@ function AlbumForm({ onClose, albumToEdit = {} }) {
 
   const albumImagePreview = selectedFile
     ? URL.createObjectURL(selectedFile)
-    : albumToEdit.imageCover;
+    : albumToEdit.imageCover ? `https://younghunter.net/${albumToEdit.imageCover}` : null
 
   const onSubmit = async (data) => {
     const formData = new FormData();

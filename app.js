@@ -17,28 +17,14 @@ const userRouter = require('./routes/userRoutes');
 
 const app = express();
 
-const corsOptions = {
-  origin: 'https://younghunter.net',
-  methods: 'GET,POST,PUT,DELETE,PATCH',
-  allowedHeaders: 'Content-Type,Authorization',
-  credentials: true, // ✅ Allow credentials
-};
-
-app.use(cors(corsOptions));
-
-app.options('*', cors(corsOptions));
-
-// 🔹 Set CORS Headers for All Responses (Extra Safety)
-app.use((req, res, next) => {
-  res.header(
-    'Access-Control-Allow-Origin',
-    'https://younghunter-front.liara.run'
-  );
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  next();
-});
+app.use(
+  cors({
+    origin: ['http://localhost:5173', 'https://younghunter.net'],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
 
 // 1) GLOBAL MIDDLEWARES
 

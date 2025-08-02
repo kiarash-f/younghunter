@@ -54,36 +54,33 @@ exports.createImage = [
     });
   }),
 ];
-exports.updateImage = catchAsync(async (req, res, next) => {
-  const updatedImage = await Image.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true,
-  });
+exports.updateImage = [
+  upload.single('image'),
+  catchAsync(async (req, res, next) => {
+    const updatedData = { ...req.body };
 
-  if (!updatedImage) {
-    return next(new AppError('No image found with that ID', 404));
-  }
+    if (req.file) {
+      const imagePath = `${req.protocol}://${req.get('host')}/public/image/${req.file.filename}`;
+      updatedData.url = imagePath;
+    }
 
-  res.status(200).json({
-    status: 'success',
-    data: { image: updatedImage },
-  });
-});
-exports.updateImage = catchAsync(async (req, res, next) => {
-  const updatedImage = await Image.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true,
-  });
+    const updatedImage = await Image.findByIdAndUpdate(req.params.id, updatedData, {
+      new: true,
+      runValidators: true,
+    });
 
-  if (!updatedImage) {
-    return next(new AppError('No image found with that ID', 404));
-  }
+    if (!updatedImage) {
+      return next(new AppError('No image found with that ID', 404));
+    }
 
-  res.status(200).json({
-    status: 'success',
-    data: { image: updatedImage },
-  });
-});
+    res.status(200).json({
+      status: 'success',
+      data: { image: updatedImage },
+    });
+  }),
+];
+
+
 exports.deleteImage = catchAsync(async (req, res, next) => {
   const image = await Image.findByIdAndDelete(req.params.id);
 

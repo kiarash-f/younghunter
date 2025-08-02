@@ -1,3 +1,5 @@
 node_modules/
-younghunter-frontend/
+younghunter-frontend-final/
 .vscode/
+config.env/
+public/

@@ -65,21 +65,35 @@ exports.createAlbum = [
   }),
 ];
 // Update an album (e.g., add sub-albums or metadata)
-exports.updateAlbum = catchAsync(async (req, res, next) => {
-  const updatedAlbum = await Album.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true,
-  });
+exports.updateAlbum = [
+  upload.single('image'),
+  catchAsync(async (req, res, next) => {
+    const updatedData = { ...req.body };
 
-  if (!updatedAlbum) {
-    return next(new AppError('No album found with that ID', 404));
-  }
+    if (req.file) {
+      const imagePath = `${req.protocol}://${req.get('host')}/public/image/${
+        req.file.filename
+      }`;
+      updatedData.imageCover = imagePath;
+    }
 
-  res.status(200).json({
-    status: 'success',
-    data: { album: updatedAlbum },
-  });
-});
+    const updatedAlbum = await Album.findByIdAndUpdate(
+      req.params.id,
+      updatedData,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    if (!updatedAlbum) {
+      return next(new AppError('No album found with that ID', 404));
+    }
+    res.status(200).json({
+      status: 'success',
+      data: { album: updatedAlbum },
+    });
+  }),
+];
 // Delete an album and optionally cascade-delete sub-albums and images
 exports.deleteAlbum = catchAsync(async (req, res, next) => {
   const album = await Album.findById(req.params.id);
